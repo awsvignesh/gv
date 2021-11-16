@@ -1,0 +1,45 @@
+- hosts: localhost
+  connection: local
+  tasks:
+   - name: Install a list of packages
+     yum:
+      name:
+      - nginx
+      - postgresql
+      - postgresql-server
+      state: present
+
+  - name: Optimal yum
+    ansible.builtin.yum:
+     name: "{{  list_of_packages  }}"
+     state: present
+     vars:
+      list_of_packages:
+      - nginx
+      - postgresql
+
+
+ - hosts: localhost
+   connection: local
+   tasks:
+   - name: Optimal yum
+     yum:
+       name: "{{  list_of_packages  }}"
+      vars:
+        list_of_packages:
+           - nginx
+           - postgresql
+      state: present
+
+- hosts: localhost
+   connection: local
+   tasks:
+   - name: 
+   ansible.builtin.yum:
+     name: "{{  item  }}"
+     state: present
+   loop: "{{  list_of_packages  }}"
+
+
+
+
