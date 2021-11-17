@@ -1,0 +1,24 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+   - name: Install a list of packages
+     yum:
+      list=installed
+     register: yum_packages
+
+   - debug:
+      var: yum_packages
+      
+      
+      - hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+   - name: Install a list of packages
+     yum:
+      name:
+      - nginx
+      - postgresql
+      - postgresql-server
+      state: present
